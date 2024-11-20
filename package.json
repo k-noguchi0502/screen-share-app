@@ -1,0 +1,20 @@
+{
+  "name": "screen-sharing-server",
+  "version": "1.0.0",
+  "description": "A signaling server for screen sharing using socket.io",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "type": "module"
+}
