@@ -36,11 +36,15 @@ io.on('connection', (socket) => {
   });
 
   // ホストが画面共有を開始した場合
-  socket.on('screen-sharing', (data) => {
-    const { roomId, stream } = data;
+  socket.on('screen-sharing-started', (roomId) => {
     console.log(`Screen sharing started for room: ${roomId}`);
-    socket.broadcast.to(roomId).emit('screen-sharing', { streamId: stream.id });
-    socket.join(roomId);
+    socket.to(roomId).emit('screen-sharing-started'); 
+  });
+
+  // ホストが画面を切り替えた場合
+  socket.on('screen-sharing-switched', (roomId) => {
+    console.log(`Screen sharing switched for room: ${roomId}`);
+    socket.to(roomId).emit('screen-sharing-switched');
   });
 
   // シグナルメッセージを送信（ピアツーピア通信のため）
